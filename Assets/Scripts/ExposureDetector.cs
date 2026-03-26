@@ -3,7 +3,9 @@ using System;
 
 public class ExposureDetector : MonoBehaviour
 {
-    public GameObject lightList;
+    public GameObject LightList;
+    public Vector3 OriginOffset;
+    public LayerMask OccluderLayers;
 
     public static event Action onEnterShadow;
     bool wasLit = false;
@@ -16,9 +18,9 @@ public class ExposureDetector : MonoBehaviour
     void Update()
     {
         bool lit = false;
-        Vector3 origin = transform.position;
+        Vector3 origin = transform.position += OriginOffset;
 
-        foreach (Transform child in lightList.transform)
+        foreach (Transform child in LightList.transform)
         {
             Light light = child.GetComponent<Light>();
 
@@ -30,7 +32,7 @@ public class ExposureDetector : MonoBehaviour
                 float distance = Vector3.Distance(origin, target);
                 
                 // no direct line of sight to light
-                if (Physics.Raycast(origin, direction, out RaycastHit hit, distance))
+                if (Physics.Raycast(origin, direction, out RaycastHit hit, distance, OccluderLayers))
                 {
                     Debug.DrawLine(origin, hit.point, Color.red);
                 }

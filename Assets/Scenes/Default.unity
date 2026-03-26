@@ -718,7 +718,7 @@ GameObject:
   - component: {fileID: 1465878584}
   - component: {fileID: 1465878588}
   - component: {fileID: 1465878589}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Light Probe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -843,7 +843,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0323da340a614a4d8bdabfadb197be0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Illu
-  lightList: {fileID: 407320674}
+  LightList: {fileID: 407320674}
+  OriginOffset: {x: 0, y: 0, z: 0}
+  OccluderLayers:
+    serializedVersion: 2
+    m_Bits: 1
 --- !u!1 &2090282858
 GameObject:
   m_ObjectHideFlags: 0
