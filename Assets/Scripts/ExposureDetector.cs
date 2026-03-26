@@ -8,6 +8,7 @@ public class ExposureDetector : MonoBehaviour
     public LayerMask OccluderLayers;
 
     public static event Action onEnterShadow;
+    public static event Action onEnterLight;
     bool wasLit = false;
 
     void Start()
@@ -70,6 +71,10 @@ public class ExposureDetector : MonoBehaviour
         }
         else if (lit)
         {
+            if (!wasLit)
+            {
+                onEnterLight?.Invoke();
+            }
             wasLit = true;
         }
     }
