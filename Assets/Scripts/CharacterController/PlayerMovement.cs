@@ -49,7 +49,7 @@ public class PlayerMovement : MonoBehaviour {
         transform.Rotate(Vector3.up * mouseX);
 
         // player look vector debug line
-        Vector3 cameraPosition = cameraTransform.position + cameraTransform.localPosition;
+        Vector3 cameraPosition = cameraTransform.position;
         Debug.DrawLine(cameraPosition, cameraPosition + (cameraTransform.forward * 2), Color.blue);
 
         Vector3 move = transform.right * moveInput.x + transform.forward * moveInput.y;

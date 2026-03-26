@@ -19,7 +19,7 @@ public class ExposureDetector : MonoBehaviour
     void Update()
     {
         bool lit = false;
-        Vector3 origin = transform.position += OriginOffset;
+        Vector3 origin = transform.position + OriginOffset;
 
         foreach (Transform child in LightList.transform)
         {
@@ -74,6 +74,7 @@ public class ExposureDetector : MonoBehaviour
             if (!wasLit)
             {
                 onEnterLight?.Invoke();
+                Debug.Log("onEnterLight event invoked");
             }
             wasLit = true;
         }
