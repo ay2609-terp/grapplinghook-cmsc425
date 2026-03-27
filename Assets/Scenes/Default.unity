@@ -407,6 +407,7 @@ MonoBehaviour:
   OccluderLayers:
     serializedVersion: 2
     m_Bits: 1
+  ShowDebugLines: 1
 --- !u!1 &407320674
 GameObject:
   m_ObjectHideFlags: 0
@@ -849,7 +850,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 0
@@ -939,6 +940,14 @@ PrefabInstance:
       propertyPath: LightList
       value: 
       objectReference: {fileID: 407320674}
+    - target: {fileID: 7584374236103045297, guid: acb5d519fe735ae4f8f1159963e67370, type: 3}
+      propertyPath: ShowDebugLines
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7584374236103045297, guid: acb5d519fe735ae4f8f1159963e67370, type: 3}
+      propertyPath: OccluderLayers.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
