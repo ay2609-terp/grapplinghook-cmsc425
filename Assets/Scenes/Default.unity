@@ -402,7 +402,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0323da340a614a4d8bdabfadb197be0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ExposureDetector
-  LightList: {fileID: 407320674}
+  LightList:
+  - {fileID: 1390384061}
   OriginOffset: {x: 0, y: -1, z: 0}
   OccluderLayers:
     serializedVersion: 2
@@ -948,6 +949,10 @@ PrefabInstance:
       propertyPath: OccluderLayers.m_Bits
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7584374236103045297, guid: acb5d519fe735ae4f8f1159963e67370, type: 3}
+      propertyPath: 'LightList.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1390384061}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
