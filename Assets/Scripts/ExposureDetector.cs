@@ -3,7 +3,7 @@ using System;
 
 public class ExposureDetector : MonoBehaviour
 {
-    public GameObject LightList;
+    public GameObject[] LightList;
     public Vector3 OriginOffset;
     public LayerMask OccluderLayers;
     public bool ShowDebugLines;
@@ -22,9 +22,9 @@ public class ExposureDetector : MonoBehaviour
         bool lit = false;
         Vector3 origin = transform.position + OriginOffset;
 
-        foreach (Transform child in LightList.transform)
+        foreach (GameObject lightObject in LightList)
         {
-            Light light = child.GetComponent<Light>();
+            Light light = lightObject.GetComponent<Light>();
             if (light == null)
             {
                 Debug.Log("child of lightList has no light component");

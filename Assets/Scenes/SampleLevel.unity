@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 23721587}
   - component: {fileID: 23721586}
   - component: {fileID: 23721585}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -853,13 +853,13 @@ Light:
   serializedVersion: 12
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1000
+  m_Intensity: 600
   m_Range: 100
   m_SpotAngle: 50
   m_InnerSpotAngle: 50
   m_CookieSize2D: {x: 0.5, y: 0.5}
   m_Shadows:
-    m_Type: 2
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -892,7 +892,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -1242,7 +1242,7 @@ Transform:
   m_GameObject: {fileID: 829495466}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -20.91461, y: 13.4108305, z: -43}
+  m_LocalPosition: {x: -20.13, y: 13.4108305, z: -43}
   m_LocalScale: {x: 90, y: 30, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1723,7 +1723,7 @@ GameObject:
   - component: {fileID: 1335102443}
   - component: {fileID: 1335102449}
   - component: {fileID: 1335102450}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1820,7 +1820,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 582bdc279142da749acb8f88551fcc10, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1905,11 +1905,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0323da340a614a4d8bdabfadb197be0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ExposureDetector
-  LightList: {fileID: 0}
+  LightList:
+  - {fileID: 2135417578}
+  - {fileID: 550730364}
+  - {fileID: 1917120600}
   OriginOffset: {x: 0, y: 0, z: 0}
   OccluderLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1
+  ShowDebugLines: 1
 --- !u!1 &1494013067
 GameObject:
   m_ObjectHideFlags: 0
@@ -2577,13 +2581,13 @@ Light:
   serializedVersion: 12
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 600
+  m_Intensity: 400
   m_Range: 100
   m_SpotAngle: 50
   m_InnerSpotAngle: 50
   m_CookieSize2D: {x: 0.5, y: 0.5}
   m_Shadows:
-    m_Type: 2
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -2616,7 +2620,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -2808,7 +2812,7 @@ Light:
   m_InnerSpotAngle: 50
   m_CookieSize2D: {x: 0.5, y: 0.5}
   m_Shadows:
-    m_Type: 2
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -2841,7 +2845,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
