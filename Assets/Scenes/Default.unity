@@ -419,10 +419,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 378851871}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82d2ebe50a1bd4b9c9a53a1b268e983c, type: 3}
+  m_Script: {fileID: 11500000, guid: cbed0fc5ae939894992be4cdff0d5280, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Death
-  origin: {x: -5, y: 1, z: 0}
+  origin: {x: 0, y: 1, z: 0}
   gracePeriod: 1
 --- !u!1 &407320674
 GameObject:
@@ -910,7 +910,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 493639328852170426, guid: acb5d519fe735ae4f8f1159963e67370, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 493639328852170426, guid: acb5d519fe735ae4f8f1159963e67370, type: 3}
       propertyPath: m_LocalPosition.z
