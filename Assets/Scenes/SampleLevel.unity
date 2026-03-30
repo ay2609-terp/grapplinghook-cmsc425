@@ -283,6 +283,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a21e6fb341b5804e927cac3f5fbec86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShadowEffects
+  CurrentVolume: {fileID: 956267020}
+  DesaturationFactor: 20
+  ExposureDecreaseFactor: 5
 --- !u!1 &33524336
 GameObject:
   m_ObjectHideFlags: 0
@@ -1981,7 +1984,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Death
   origin: {x: -36, y: 1, z: 35}
-  gracePeriod: 1
+  gracePeriod: 0.5
 --- !u!1 &1494013067
 GameObject:
   m_ObjectHideFlags: 0
