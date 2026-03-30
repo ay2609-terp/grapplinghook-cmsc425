@@ -247,6 +247,7 @@ GameObject:
   - component: {fileID: 378851873}
   - component: {fileID: 378851872}
   - component: {fileID: 378851878}
+  - component: {fileID: 378851879}
   m_Layer: 2
   m_Name: Player
   m_TagString: Untagged
@@ -409,6 +410,20 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   ShowDebugLines: 1
+--- !u!114 &378851879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 378851871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82d2ebe50a1bd4b9c9a53a1b268e983c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Death
+  origin: {x: -5, y: 1, z: 0}
+  gracePeriod: 1
 --- !u!1 &407320674
 GameObject:
   m_ObjectHideFlags: 0
