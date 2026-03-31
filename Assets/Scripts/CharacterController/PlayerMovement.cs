@@ -3,12 +3,12 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 5f;
+    public float speed = 2.5f;
     public float mouseSensitivity = 0.1f;
 
     // Jumping and falling vars
     public float gravity = -9.81f;
-    public float jumpHeight = 1.5f;
+    public float jumpHeight = .1f;
 
     // Jump check
     private bool isGrounded;
@@ -154,16 +154,16 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isGrounded && canStand()) 
         {
-            yVelocity = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            yVelocity = Mathf.Sqrt(jumpHeight * -1f * gravity);
         }
     }
 
     // Can player stand check
     bool canStand()
     {
-        float radius = controller.radius * 0.95f;
-        Vector3 bottom = transform.position + Vector3.up * radius;
-        Vector3 top = transform.position + Vector3.up * (standingHeight - radius);
+        float radius = controller.radius;
+        Vector3 bottom = transform.position - Vector3.up * (controller.height / 2 - controller.radius);
+        Vector3 top = transform.position + Vector3.up * (controller.height / 2 - controller.radius);
 
         return !Physics.CheckCapsule(bottom, top, radius);
     }
