@@ -1,11 +1,13 @@
 using UnityEngine;
 using System;
 using System.Collections;
+using Unity.Mathematics;
 
 
 public class Death : MonoBehaviour
 {
     public Vector3 origin;
+    public float rotation; // 0-360 degrees (clockwise)
     public float gracePeriod;
 
     private Coroutine resetCoroutine;
@@ -13,9 +15,7 @@ public class Death : MonoBehaviour
 
     void Start()
     {
-
         controller = GetComponent<CharacterController>();
-
     }
 
     private void OnEnable()
@@ -78,11 +78,14 @@ public class Death : MonoBehaviour
         
         yield return new WaitForSeconds(gracePeriod);
 
-        Debug.Log($"DeathReset: Grace period expired, now resetting player position to {origin}");
+        Debug.Log($"DeathReset: Grace period expired, now resetting player position to {origin}, rotation to {rotation}");
 
         controller.enabled = false;
         transform.position = origin;
+        transform.rotation = Quaternion.Euler(0, rotation, 0);
         controller.enabled = true;
+
+
 
         resetCoroutine = null;
     }
