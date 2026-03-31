@@ -71,6 +71,11 @@ public class ExposureDetector : MonoBehaviour
 
     private bool inSpotLight(Light light, Vector3 position, bool drawDebugLines = false)
     {
+        if (!light.enabled)
+        {
+            return false;
+        }
+
         Vector3 lightPosition = light.transform.position;
 
         // check if position is in the spotlight cone
