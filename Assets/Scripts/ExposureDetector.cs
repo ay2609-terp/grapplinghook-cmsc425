@@ -85,7 +85,7 @@ public class ExposureDetector : MonoBehaviour
         if (relativeDot < angleThreshold)
         {
             if (drawDebugLines)
-                Debug.DrawLine(position, lightPosition, Color.yellow);
+                Debug.DrawLine(position, lightPosition, new Color(1.0f, 1.0f, 0.0f, 0.15f)); // transparent yellow
             return false;
         }
 
