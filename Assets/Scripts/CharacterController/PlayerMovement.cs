@@ -25,6 +25,15 @@ public class PlayerMovement : MonoBehaviour
     private float standingCamHeight;
     private float crouchCamHeight;
 
+    // Sprint vars
+    public float sprintSpeedMultiplier = 1.5f;
+    private bool isSprinting = false;
+
+    // Sprint FOV vars
+    public float sprintFOVMultiplier = 1.1f;
+    private float baseFOV;
+    private Camera playerCamera;
+
     private CharacterController controller;
     private PlayerControls controls;
     private Vector2 moveInput;
@@ -55,6 +64,10 @@ public class PlayerMovement : MonoBehaviour
             crouchHeld = false;
             stopCrouch();
         };
+
+        // Sprint value reads
+        controls.Player.Sprint.performed += ctx => isSprinting = true;
+        controls.Player.Sprint.canceled += ctx => isSprinting = false;
     }
 
     void OnEnable()
@@ -82,6 +95,10 @@ public class PlayerMovement : MonoBehaviour
         // Camera heights - store camera heights relative to the character root
         standingCamHeight = cameraTransform.localPosition.y;
         crouchCamHeight = standingCamHeight - (standingHeight - crouchHeight);
+
+        // Sprint FOV
+        playerCamera = cameraTransform.GetComponent<Camera>();
+        baseFOV = playerCamera.fieldOfView;
     }
 
     void Update()
@@ -106,9 +123,29 @@ public class PlayerMovement : MonoBehaviour
 
         // Movement and speed
         Vector3 move = transform.right * moveInput.x + transform.forward * moveInput.y;
-        float currentSpeed = isCrouching ? speed * crouchSpeedMult : speed;
-        Vector3 velocity = move * currentSpeed + Vector3.up * yVelocity;
+        float baseSpeed = speed;
+        if (isCrouching) 
+        {
+        baseSpeed *= crouchSpeedMult; // Slow player if crouching
+        }
+
+        if (isSprinting && !isCrouching && isGrounded) 
+        {
+            baseSpeed *= sprintSpeedMultiplier; // Start sprinting if grounded and not crouching
+        }
+
+        Vector3 velocity = move * baseSpeed + Vector3.up * yVelocity;
         controller.Move(velocity * Time.deltaTime);
+
+        // Sprinting increases FOV
+        float targetFOV = isSprinting && !isCrouching ? baseFOV * sprintFOVMultiplier : baseFOV;
+        playerCamera.fieldOfView = Mathf.Lerp(playerCamera.fieldOfView, targetFOV, Time.deltaTime * 10f);
+
+        // If the player hits their head cancel upward momentum.
+        if ((controller.collisionFlags & CollisionFlags.Above) != 0 && yVelocity > 0)
+        {
+            yVelocity = 0f;
+        }
 
         // Auto stand when possible
         if (!crouchHeld && isCrouching && canStand())
@@ -126,6 +163,12 @@ public class PlayerMovement : MonoBehaviour
     // Start crouch
     void startCrouch()
     {
+        // Dont crouch if jumping
+        if (!isGrounded || yVelocity > 0f) 
+        {
+            return;
+        }
+
         isCrouching = true;
         controller.height = crouchHeight;
         controller.center = crouchCenter;
@@ -142,6 +185,7 @@ public class PlayerMovement : MonoBehaviour
         standUp();
     }
 
+    // Auto stand
     void standUp()
     {
         isCrouching = false;
@@ -152,9 +196,11 @@ public class PlayerMovement : MonoBehaviour
     // Jump
     void Jump()
     {
-        if (isGrounded && canStand()) 
+        // Dont jump if aerial or crouching
+        if (isGrounded && canStand() && isCrouching == false) 
         {
             yVelocity = Mathf.Sqrt(jumpHeight * -1f * gravity);
+            isGrounded = false;
         }
     }
 
@@ -164,7 +210,6 @@ public class PlayerMovement : MonoBehaviour
         float radius = controller.radius;
         Vector3 bottom = transform.position - Vector3.up * (controller.height / 2 - controller.radius);
         Vector3 top = transform.position + Vector3.up * (controller.height / 2 - controller.radius);
-
         return !Physics.CheckCapsule(bottom, top, radius);
     }
 }
