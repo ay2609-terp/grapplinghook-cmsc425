@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 2.5f;
+    public float speed = 2f;
     public float mouseSensitivity = 0.1f;
 
     // Jumping and falling vars
