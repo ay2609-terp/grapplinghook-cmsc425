@@ -9,6 +9,9 @@ public class Death : MonoBehaviour
     public Vector3 origin;
     public float rotation; // 0-360 degrees (clockwise)
     public float gracePeriod;
+    public float deathProgression; 
+    private DateTime routineStartTime;
+    
 
     private Coroutine resetCoroutine;
     private CharacterController controller;
@@ -40,6 +43,37 @@ public class Death : MonoBehaviour
         }
     }
 
+    private IEnumerator ResetAfterGracePeriod()
+    {
+        float elapsed = 0f;
+        Debug.Log("DeathReset: Coroutine started");
+
+        while (elapsed < gracePeriod)
+        {
+            elapsed += Time.deltaTime;
+            
+            // Map elapsed time to a 0.0 - 1.0 range for progress bars/effects
+            deathProgression = Mathf.Clamp01(elapsed / gracePeriod);
+            
+            yield return null; // Wait until the next frame
+        }
+
+        // Ensure it hits exactly 1.0 at the end
+        deathProgression = 1f;
+
+        Debug.Log("DeathReset: Grace period expired. Resetting player.");
+
+        controller.enabled = false;
+        transform.position = origin;
+        transform.rotation = Quaternion.Euler(0, rotation, 0);
+        controller.enabled = true;
+
+        // Reset progression and reference
+        deathProgression = 0f;
+        resetCoroutine = null;
+    }
+
+
     // SWAP THIS FUNCTION NAME WITH LIGHT IF WE WANT THE LIGHT TO KILL AND SHADOW TO BE NEUTRAL
     private void HandleEnterShadow()
     {
@@ -48,6 +82,7 @@ public class Death : MonoBehaviour
         if (resetCoroutine == null)
         {
             Debug.Log($"DeathReset: Starting reset timer ( for {gracePeriod} seconds)");            
+            routineStartTime = DateTime.Now;
             resetCoroutine = StartCoroutine(ResetAfterGracePeriod());
         }
         else
@@ -61,41 +96,12 @@ public class Death : MonoBehaviour
         Debug.Log("DeathReset: Player entered LIGHT");        
         if (resetCoroutine != null)
         {
-            Debug.Log("DeathReset: Cancelling reset timer");            
             StopCoroutine(resetCoroutine);
             resetCoroutine = null;
-        }
-        else
-        {
-            Debug.Log("DeathReset: No timer active, nothing to cancel, window passed?");
+            
+            // Reset progression immediately when escaping to light
+            deathProgression = 0f; 
         }
     }
 
-    // coroutine which starts running when player enters light, and stops running when it leaves the light or grace period runs out
-    private IEnumerator ResetAfterGracePeriod()
-    {
-        Debug.Log("DeathReset: Coroutine started");        
-        
-        yield return new WaitForSeconds(gracePeriod);
-
-        Debug.Log($"DeathReset: Grace period expired, now resetting player position to {origin}, rotation to {rotation}");
-
-        controller.enabled = false;
-        transform.position = origin;
-        transform.rotation = Quaternion.Euler(0, rotation, 0);
-        controller.enabled = true;
-
-
-
-        resetCoroutine = null;
-    }
-
-    // void Update()
-    // {
-    //     // methodology/idea for the death mechanic
-    //     // use a coroutine which will initialize a timer whenever the character enters light
-    //     // the caller of the coroutine will cancel it if the player enters darkness again,
-    //     // if the coroutine timer ends, then it will initiate the reset for the character
-
-    // }
 }
