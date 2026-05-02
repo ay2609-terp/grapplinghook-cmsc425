@@ -129,7 +129,7 @@ public class PlayerMovement : MonoBehaviour
         baseSpeed *= crouchSpeedMult; // Slow player if crouching
         }
 
-        if (isSprinting && !isCrouching && isGrounded) 
+        if (isSprinting && moveInput.y > 0 && !isCrouching && isGrounded) 
         {
             baseSpeed *= sprintSpeedMultiplier; // Start sprinting if grounded and not crouching
         }
@@ -138,7 +138,7 @@ public class PlayerMovement : MonoBehaviour
         controller.Move(velocity * Time.deltaTime);
 
         // Sprinting increases FOV
-        float targetFOV = isSprinting && !isCrouching ? baseFOV * sprintFOVMultiplier : baseFOV;
+        float targetFOV = isSprinting && moveInput.y > 0 && !isCrouching ? baseFOV * sprintFOVMultiplier : baseFOV;
         playerCamera.fieldOfView = Mathf.Lerp(playerCamera.fieldOfView, targetFOV, Time.deltaTime * 10f);
 
         // If the player hits their head cancel upward momentum.
