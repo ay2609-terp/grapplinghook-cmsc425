@@ -1,16 +1,12 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class LeverInteractable : MonoBehaviour
 {
     public LeverSwitch lever;
-    private bool playerNear = false;
 
-    // Update is called once per frame
-    void Update()
+    public void Interact()
     {
-        // press e AND player is near, lever interacted (add near mechanic later)
-        if (Keyboard.current.eKey.wasPressedThisFrame)
+        if (lever != null)
         {
             lever.PullLever();
         }
