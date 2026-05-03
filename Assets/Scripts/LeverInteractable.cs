@@ -9,7 +9,7 @@ public class LeverInteractable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // press e AND player is near, lever interacted with
+        // press e AND player is near, lever interacted (add near mechanic later)
         if (Keyboard.current.eKey.wasPressedThisFrame)
         {
             lever.PullLever();

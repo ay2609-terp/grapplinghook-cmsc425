@@ -13,14 +13,7 @@ public class LeverSwitch : MonoBehaviour
 
         for (int i = 0; i < lightsToTurnOff.Length; i++)
         {
-            if (isOn)
-            {
-                lightsToTurnOff[i].intensity = intensity;
-            }
-            else
-            {
-                lightsToTurnOff[i].intensity = 0f;
-            }
+            lightsToTurnOff[i].enabled = isOn;
         }
     }
 }
