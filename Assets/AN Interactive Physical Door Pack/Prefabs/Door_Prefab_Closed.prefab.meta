@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 07dd0ed6acb5c5140a213008cf7b2a1d
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 163249
+  packageName: Interactive Physical Door Pack
+  packageVersion: 1.0
+  assetPath: Assets/AN Interactive Physical Door Pack/Prefabs/Door_Prefab_Closed.prefab
+  uploadId: 353527

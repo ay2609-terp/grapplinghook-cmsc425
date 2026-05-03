@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 814fe2e2057e6fa46a620478d50b403c
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 163249
+  packageName: Interactive Physical Door Pack
+  packageVersion: 1.0
+  assetPath: Assets/AN Interactive Physical Door Pack/Animations/AN_Button.controller
+  uploadId: 353527
