@@ -13,7 +13,7 @@ public class ExposureDetector : MonoBehaviour
 
     private GameObject[] LightList;
 
-    void Start()
+    void Awake()
     {
         Light[] sceneLights = FindObjectsByType<Light>(FindObjectsSortMode.None);
         LightList = new GameObject[sceneLights.Length];
