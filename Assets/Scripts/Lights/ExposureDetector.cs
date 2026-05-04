@@ -129,7 +129,7 @@ public class ExposureDetector : MonoBehaviour
 
         Vector3 directionToLight = -light.transform.forward;
 
-        float maxDistance = 10000f;
+        float maxDistance = 1000f;
 
         if (Physics.Raycast(position, directionToLight, out RaycastHit hit, maxDistance, OccluderLayers))
         {
@@ -140,7 +140,7 @@ public class ExposureDetector : MonoBehaviour
         }
 
         if (drawDebugLines)
-            Debug.DrawLine(position, position + directionToLight * 10f, Color.green);
+            Debug.DrawLine(position, position + directionToLight * maxDistance, Color.green);
 
         return true;
     }
