@@ -85,6 +85,17 @@ public class ExposureDetector : MonoBehaviour
 
         Vector3 lightPosition = light.transform.position;
 
+          float distance = Vector3.Distance(position, lightPosition);
+
+    // check if player is outside the light's range
+    if (distance > light.range)
+    {
+        if (drawDebugLines)
+            Debug.DrawLine(position, lightPosition, Color.gray);
+
+        return false;
+    }
+
         // check if position is in the spotlight cone
         float relativeDot = Vector3.Dot(light.transform.forward, (position - lightPosition).normalized);
         relativeDot = Mathf.Clamp(relativeDot, -1f, 1f); // for floating point imprecision 
@@ -98,7 +109,7 @@ public class ExposureDetector : MonoBehaviour
 
         // check for occlusion with raycast
         Vector3 direction = (lightPosition - position).normalized;
-        float distance = Vector3.Distance(position, lightPosition);
+
         if (Physics.Raycast(position, direction, out RaycastHit hit, distance, OccluderLayers))
         {
             if (drawDebugLines)
