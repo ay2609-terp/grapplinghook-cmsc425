@@ -82,6 +82,7 @@ public class PlayerMovement : MonoBehaviour
     void OnDisable()
     {
         controls.Disable();
+        Cursor.lockState = CursorLockMode.None;
     }
 
     void Start()
