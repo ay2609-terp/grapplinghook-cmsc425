@@ -8121,7 +8121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a21e6fb341b5804e927cac3f5fbec86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShadowEffects
-  CurrentVolume: {fileID: 0}
+  CurrentVolume: {fileID: 1164475698}
   minSaturationAtFullDeath: -20
   minPostExposureAtFullDeath: -3
   responseSpeed: 10
