@@ -2,10 +2,12 @@ using UnityEngine;
 
 public class LightOnOff : MonoBehaviour
 {
+    public LightOnOff lightTarget;
+
     public Renderer lampModel;
 
-    public Material onMaterial;
-    public Material offMaterial;
+    public Material OnMaterial;
+    public Material OffMaterial;
 
     private Light lightObject;
 
@@ -17,12 +19,12 @@ public class LightOnOff : MonoBehaviour
     public void EnableLight()
     {
         lightObject.enabled = true;
-        lampModel.material = onMaterial;
+        lampModel.material = OnMaterial;
     }
 
     public void DisableLight()
     {
         lightObject.enabled = false;
-        lampModel.material = offMaterial;
+        lampModel.material = OffMaterial;
     }
 }
