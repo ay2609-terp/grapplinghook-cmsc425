@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,7 +12,14 @@ public class ChangeScene : MonoBehaviour, IInteractable
 
     public void Interact(GameObject player)
     {
-        SceneManager.LoadScene(sceneToLoad);
+        if (SceneFader.Instance != null)
+        {
+            SceneFader.Instance.LoadSceneWithFade(sceneToLoad);
+        }
+        else
+        {
+            SceneManager.LoadScene(sceneToLoad);
+        }
     }
 
     public void InteractRelease(GameObject player)
