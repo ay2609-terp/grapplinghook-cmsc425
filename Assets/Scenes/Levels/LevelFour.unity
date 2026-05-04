@@ -2414,6 +2414,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Switchable
   ConnectedLights:
   - {fileID: 966365541}
+  - {fileID: 1896889953}
   OnMaterial: {fileID: 2100000, guid: f8c4a8ef9eee9f540adf48656fbfe0f3, type: 2}
   OffMaterial: {fileID: 2100000, guid: 079043d8de0334743a24d6ecc4fe89f6, type: 2}
   IndicatorLight: {fileID: 787975842}
