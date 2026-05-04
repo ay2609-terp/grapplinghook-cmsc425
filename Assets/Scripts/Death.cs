@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System;
 using System.Collections;
 using Unity.Mathematics;
@@ -14,12 +15,6 @@ public class Death : MonoBehaviour
     
 
     private Coroutine resetCoroutine;
-    private CharacterController controller;
-
-    void Start()
-    {
-        controller = GetComponent<CharacterController>();
-    }
 
     private void OnEnable()
     {
@@ -62,15 +57,9 @@ public class Death : MonoBehaviour
         deathProgression = 1f;
 
         Debug.Log("DeathReset: Grace period expired. Resetting player.");
+        Debug.Log("DeathReset: Grace period expired. Reloading scene.");
 
-        controller.enabled = false;
-        transform.position = origin;
-        transform.rotation = Quaternion.Euler(0, rotation, 0);
-        controller.enabled = true;
-
-        // Reset progression and reference
-        deathProgression = 0f;
-        resetCoroutine = null;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
 
