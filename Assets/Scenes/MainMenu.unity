@@ -1213,9 +1213,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 313052794}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57c6436668c274408a49100332b4d0d6, type: 3}
+  m_Script: {fileID: 11500000, guid: c4ba35976b45d4c449cb3e2a21f3d81b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneFader
+  fadeImage: {fileID: 897373610}
+  fadeDuration: 0.75
 --- !u!1 &355014372
 GameObject:
   m_ObjectHideFlags: 0
