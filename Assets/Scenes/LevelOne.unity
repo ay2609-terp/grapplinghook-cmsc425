@@ -798,7 +798,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Interact
   InteractAction: {fileID: -6042637536949989637, guid: c70f9ea833686be4fa0af50559d63080, type: 3}
   CameraTransform: {fileID: 1747114771}
-  TooltipUI: {fileID: 0}
+  TooltipUI: {fileID: 1899157565}
   Range: 2.5
   OccluderLayers:
     serializedVersion: 2
