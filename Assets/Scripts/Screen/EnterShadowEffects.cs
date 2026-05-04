@@ -4,44 +4,21 @@ using UnityEngine.Rendering.Universal;
 
 public class ShadowEffects : MonoBehaviour
 {
+    private Death death;
+
     public GameObject CurrentVolume;
-    public float DesaturationFactor;
-    public float ExposureDecreaseFactor;
 
-    private bool inShadow;
+    public float minSaturationAtFullDeath = -20f;
 
-    void Start()
+    public float minPostExposureAtFullDeath = -3f;
+
+    public float responseSpeed = 10f;
+
+    void Awake()
     {
-        
+        death = GetComponentInParent<Death>();
     }
 
-    private void OnEnable()
-    {
-        Debug.Log("DeathReset: Subscribing to events from ExposureDetector");
-
-        ExposureDetector.onEnterLight += HandleEnterLight;
-        ExposureDetector.onEnterShadow += HandleEnterShadow;
-    }
-
-    private void OnDisable()
-    {
-        Debug.Log("DeathReset: Unsubscribing from ExposureDetector events");
-
-        ExposureDetector.onEnterLight -= HandleEnterLight;
-        ExposureDetector.onEnterShadow -= HandleEnterShadow;
-    }
-
-    private void HandleEnterLight()
-    {
-        inShadow = false;
-    }
-
-    private void HandleEnterShadow()
-    {
-        inShadow = true;
-    }
-
-    // Should use coroutine instead 
     void Update()
     {
         Volume volume = CurrentVolume.transform.GetComponent<Volume>();
@@ -64,34 +41,13 @@ public class ShadowEffects : MonoBehaviour
             return;
         }
 
-        if (inShadow)
-        {
+        float progress = death != null ? Mathf.Clamp01(death.deathProgression) : 0f;
 
-            volumeColor.saturation.value -= DesaturationFactor * Time.deltaTime;
-            volumeColor.postExposure.value -= ExposureDecreaseFactor * Time.deltaTime;
-        }
-        else
-        {
-            float saturationChange = DesaturationFactor * Time.deltaTime * 2;
-            float exposureChange = ExposureDecreaseFactor * Time.deltaTime * 2; 
+        float targetSaturation = Mathf.Lerp(0f, minSaturationAtFullDeath, progress);
+        float targetPostExposure = Mathf.Lerp(0f, minPostExposureAtFullDeath, progress);
 
-            if (volumeColor.saturation.value + saturationChange > 0)
-            {
-                volumeColor.saturation.value = 0;
-            }
-            else
-            {
-                volumeColor.saturation.value += saturationChange;
-            }
-
-            if (volumeColor.postExposure.value + exposureChange > 0)
-            {
-                volumeColor.postExposure.value = 0;
-            }
-            else
-            {
-                volumeColor.postExposure.value += exposureChange;
-            }
-        }
+        float t = Mathf.Clamp01(Time.deltaTime * responseSpeed);
+        volumeColor.saturation.value = Mathf.Lerp(volumeColor.saturation.value, targetSaturation, t);
+        volumeColor.postExposure.value = Mathf.Lerp(volumeColor.postExposure.value, targetPostExposure, t);
     }
 }
