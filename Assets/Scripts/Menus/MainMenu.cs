@@ -7,21 +7,14 @@ public class MainMenu : MonoBehaviour
     public GameObject levelSelectPanel;
     public GameObject instructionsPanel;
 
+    void Start()
+    {
+        BackToMainMenu();
+    }
+
     public void Play()
     {
-        int hasPlayedBefore = PlayerPrefs.GetInt("HasPlayedBefore", 0);
-
-        if (hasPlayedBefore == 0)
-        {
-            PlayerPrefs.SetInt("HasPlayedBefore", 1);
-            PlayerPrefs.Save();
-
-            SceneManager.LoadScene("LevelOne");
-        }
-        else
-        {
-            OpenLevelSelect();
-        }
+        OpenLevelSelect();
     }
 
     public void OpenLevelSelect()
@@ -53,17 +46,5 @@ public class MainMenu : MonoBehaviour
     public void Quit()
     {
         Application.Quit();
-    }
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
