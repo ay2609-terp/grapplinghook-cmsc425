@@ -4,17 +4,28 @@ using System.Collections;
 
 public class Switchable : MonoBehaviour, IInteractable
 {
+    public LightOnOff[] ConnectedLights;
+
     public Material OnMaterial;
     public Material OffMaterial;
     public Renderer IndicatorLight;
     public GameObject Lever;
+    public AudioSource SwitchAudio;
 
     public float LeverMaxAngle = 60;
     public float RotateSpeed = 8f;
     
     private bool switchEnabled;
     private Coroutine rotateRoutine;
-    
+
+    void Start()
+    {
+        foreach (LightOnOff light in ConnectedLights)
+        {
+            light.DisableLight();
+        }
+    }
+
     public string ActionTooltip()
     {
         return "[LMB] Switch";
@@ -28,12 +39,22 @@ public class Switchable : MonoBehaviour, IInteractable
         {
             if (rotateRoutine != null) StopCoroutine(rotateRoutine);
             rotateRoutine = StartCoroutine(SwitchOn());
+            foreach (LightOnOff light in ConnectedLights)
+            {
+                light.EnableLight();
+            }
         }
         else
         {
             if (rotateRoutine != null) StopCoroutine(rotateRoutine);
             rotateRoutine = StartCoroutine(SwitchOff());
+            foreach (LightOnOff light in ConnectedLights)
+            {
+                light.DisableLight();
+            }
         }
+
+        SwitchAudio.PlayOneShot(SwitchAudio.clip);
     }
 
     public void InteractRelease(GameObject player)

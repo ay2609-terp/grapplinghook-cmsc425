@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class LightOnOff : MonoBehaviour
 {
-    public LightOnOff lightTarget;
-
     public Renderer lampModel;
 
     public Material OnMaterial;

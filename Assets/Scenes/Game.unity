@@ -311,7 +311,7 @@ PrefabInstance:
     - target: {fileID: -7635826562936255635, guid: 8b7b037281af04b4780acd7f97367ef5, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: f8c4a8ef9eee9f540adf48656fbfe0f3, type: 2}
+      objectReference: {fileID: 2100000, guid: 079043d8de0334743a24d6ecc4fe89f6, type: 2}
     - target: {fileID: 919132149155446097, guid: 8b7b037281af04b4780acd7f97367ef5, type: 3}
       propertyPath: m_Name
       value: Lights 3
@@ -1432,6 +1432,11 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
+--- !u!23 &932277977 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7635826562936255635, guid: 8b7b037281af04b4780acd7f97367ef5, type: 3}
+  m_PrefabInstance: {fileID: 87848426}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &950283362 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0be34a4b047cf6840bd283eae5ec1a1d, type: 3}
@@ -1514,6 +1519,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1155bd4aeb2e4c24cbe568e5feb5afe3, type: 3}
   m_PrefabInstance: {fileID: 1008581836}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1048338047 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 020ff98de778ab2458367f55d2ba2342, type: 3}
+  m_PrefabInstance: {fileID: 1986287803}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1068011650
 GameObject:
@@ -1868,6 +1878,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1234008111}
   - component: {fileID: 1234008112}
+  - component: {fileID: 1234008113}
+  - component: {fileID: 1234008114}
   m_Layer: 3
   m_Name: Lever
   m_TagString: Untagged
@@ -1913,8 +1925,127 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.5795405, y: 1.5043416, z: 2.4809353}
-  m_Center: {x: 0, y: 0.11825383, z: 0}
+  m_Size: {x: 1.5795405, y: 1.3677164, z: 2.4809353}
+  m_Center: {x: 0, y: 0.049941074, z: 0}
+--- !u!114 &1234008113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1234008110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0a1c707ffc1e9a48a914b8e8da55bf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Switchable
+  ConnectedLights:
+  - {fileID: 1999493788}
+  - {fileID: 2035883234}
+  OnMaterial: {fileID: 2100000, guid: f8c4a8ef9eee9f540adf48656fbfe0f3, type: 2}
+  OffMaterial: {fileID: 2100000, guid: 079043d8de0334743a24d6ecc4fe89f6, type: 2}
+  IndicatorLight: {fileID: 932277977}
+  Lever: {fileID: 1048338047}
+  SwitchAudio: {fileID: 1234008114}
+  LeverMaxAngle: 60
+  RotateSpeed: 8
+--- !u!82 &1234008114
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1234008110}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 6f094d7dca9c26e46a41e09e63ffa014, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.25
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1259468925
 GameObject:
   m_ObjectHideFlags: 0
@@ -2134,6 +2265,7 @@ GameObject:
   - component: {fileID: 1367353631}
   - component: {fileID: 1367353632}
   - component: {fileID: 1367353633}
+  - component: {fileID: 1367353634}
   m_Layer: 3
   m_Name: GrabLight
   m_TagString: Untagged
@@ -2225,6 +2357,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1367353634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1367353629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a27a7dd7d59e95e4c8370b18fff70e22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LightOnOff
+  lampModel: {fileID: 1582734135}
+  OnMaterial: {fileID: 2100000, guid: 5a79a615af060194ba718487fe2dba58, type: 2}
+  OffMaterial: {fileID: 2100000, guid: 079043d8de0334743a24d6ecc4fe89f6, type: 2}
 --- !u!1 &1371823638
 GameObject:
   m_ObjectHideFlags: 0
@@ -2614,6 +2761,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a02e1f9a61c7fb84e8be88c8688bfd24, type: 3}
   m_PrefabInstance: {fileID: 1527400180}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1582734135 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7635826562936255635, guid: bd606e3c0d6ec6a409ed9e03469f3346, type: 3}
+  m_PrefabInstance: {fileID: 1654020802}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1645177726
 PrefabInstance:
@@ -3560,6 +3712,11 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!23 &1941483511 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7635826562936255635, guid: bd606e3c0d6ec6a409ed9e03469f3346, type: 3}
+  m_PrefabInstance: {fileID: 333324427}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1986287803
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3586,7 +3743,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 020ff98de778ab2458367f55d2ba2342, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.5
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 020ff98de778ab2458367f55d2ba2342, type: 3}
       propertyPath: m_LocalRotation.y
@@ -3598,7 +3755,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 020ff98de778ab2458367f55d2ba2342, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 60
+      value: -60
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 020ff98de778ab2458367f55d2ba2342, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -3695,8 +3852,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LightOnOff
   lampModel: {fileID: 7692468}
-  onMaterial: {fileID: 2100000, guid: 5a79a615af060194ba718487fe2dba58, type: 2}
-  offMaterial: {fileID: 2100000, guid: 079043d8de0334743a24d6ecc4fe89f6, type: 2}
+  OnMaterial: {fileID: 2100000, guid: 5a79a615af060194ba718487fe2dba58, type: 2}
+  OffMaterial: {fileID: 2100000, guid: 079043d8de0334743a24d6ecc4fe89f6, type: 2}
 --- !u!1001 &2006200715
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3842,6 +3999,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2035883232}
   - component: {fileID: 2035883233}
+  - component: {fileID: 2035883234}
   m_Layer: 2
   m_Name: FixedLight
   m_TagString: Untagged
@@ -3887,6 +4045,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.584124, y: 2.1735096, z: 1.9520484}
   m_Center: {x: 0, y: -0.095360495, z: 0}
+--- !u!114 &2035883234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2035883231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a27a7dd7d59e95e4c8370b18fff70e22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LightOnOff
+  lampModel: {fileID: 1941483511}
+  OnMaterial: {fileID: 2100000, guid: 5a79a615af060194ba718487fe2dba58, type: 2}
+  OffMaterial: {fileID: 2100000, guid: 079043d8de0334743a24d6ecc4fe89f6, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
