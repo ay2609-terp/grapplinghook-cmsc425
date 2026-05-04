@@ -3,7 +3,6 @@ using System;
 
 public class ExposureDetector : MonoBehaviour
 {
-    public GameObject[] LightList;
     public Vector3 OriginOffset;
     public LayerMask OccluderLayers;
     public bool ShowDebugLines;
@@ -12,9 +11,17 @@ public class ExposureDetector : MonoBehaviour
     public static event Action onEnterLight;
     bool wasLit = false;
 
+    private GameObject[] LightList;
+
     void Start()
     {
+        Light[] sceneLights = FindObjectsByType<Light>(FindObjectsSortMode.None);
+        LightList = new GameObject[sceneLights.Length];
 
+        for (int i = 0; i < sceneLights.Length; i++)
+        {
+            LightList[i] = sceneLights[i].gameObject;
+        }
     }
 
     void Update()

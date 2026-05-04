@@ -2923,10 +2923,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0323da340a614a4d8bdabfadb197be0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ExposureDetector
-  LightList:
-  - {fileID: 790061590}
-  - {fileID: 864571202}
-  - {fileID: 42336776}
   OriginOffset: {x: 0, y: -1, z: 0}
   OccluderLayers:
     serializedVersion: 2
