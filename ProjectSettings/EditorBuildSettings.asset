@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/DeleteLater.unity
     guid: 6b98abba9ebd96b499cd4503da1189cb
   - enabled: 1
-    path: Assets/Scenes/LevelThree.unity
+    path: Assets/Scenes/Levels/LevelThree.unity
     guid: 5fd28b134e79b4e89ba1a5192a1e3ea8
   - enabled: 1
     path: Assets/Scenes/LevelTwo.unity
@@ -30,7 +30,7 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleLevel.unity
     guid: abe94287a8b91ae4ca2e2e671c462181
   - enabled: 1
-    path: Assets/Scenes/LevelThree.unity
+    path: Assets/Scenes/Levels/LevelThree.unity
     guid: 5fd28b134e79b4e89ba1a5192a1e3ea8
   - enabled: 1
     path: Assets/Scenes/LevelTwo.unity
