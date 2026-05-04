@@ -1044,6 +1044,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3de7b7f8623ba9840b10e67c17f9d065, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Pivotable
+  LookAction: {fileID: 2148871177844624035, guid: c70f9ea833686be4fa0af50559d63080, type: 3}
+  rotationSpeed: 50
+  maxYaw: 60
+  maxPitch: 30
 --- !u!1 &790061590
 GameObject:
   m_ObjectHideFlags: 0
@@ -2011,6 +2015,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bfb3b603be33e9408a83697847b7fd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickupGrabbable
+  HoldDistance: 2
+  GrabForce: 100
+  GrabTorque: 3
+  ForceDamping: 10
+  TorqueDamping: 20
 --- !u!54 &1367353633
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2068,7 +2077,7 @@ Transform:
   m_GameObject: {fileID: 1371823638}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.07, z: 0}
+  m_LocalPosition: {x: 0, y: 0.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2185,7 +2194,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.4
+  near clip plane: 0.05
   far clip plane: 1000
   field of view: 90
   orthographic: 0
@@ -2646,7 +2655,7 @@ GameObject:
   - component: {fileID: 1823964794}
   - component: {fileID: 1823964793}
   - component: {fileID: 1823964805}
-  m_Layer: 2
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2962,11 +2971,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   speed: 5
   mouseSensitivity: 0.1
+  lookEnabled: 1
   gravity: -9.81
   jumpHeight: 1.5
   standingHeight: 2
   cameraTransform: {fileID: 1371823639}
-  crouchHeight: 1
+  crouchHeight: 1.15
   crouchSpeedMult: 0.5
   sprintSpeedMultiplier: 1.5
   sprintFOVMultiplier: 1.1
@@ -3078,7 +3088,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c1d69e9f77261d46b175fb82d647843, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interact
-  InteractAction: {fileID: 1781555164194001046, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  InteractAction: {fileID: -6042637536949989637, guid: c70f9ea833686be4fa0af50559d63080, type: 3}
   CameraTransform: {fileID: 1371823639}
   TooltipUI: {fileID: 644023679}
   Range: 2.5

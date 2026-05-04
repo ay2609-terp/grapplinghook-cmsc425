@@ -8,15 +8,15 @@ public class ChangeScene : MonoBehaviour, IInteractable
 
     public string ActionTooltip()
     {
-        return "[Left Click] Next Level";
+        return "[LMB] Next Level";
     }
 
-    public void Interact()
+    public void Interact(GameObject player)
     {
         SceneManager.LoadScene(sceneToLoad);
     }
 
-    public void InteractRelease()
+    public void InteractRelease(GameObject player)
     {
 
     }

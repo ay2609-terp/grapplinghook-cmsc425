@@ -1,6 +1,8 @@
+using UnityEngine;
+
 public interface IInteractable
 {
     string ActionTooltip();
-    void Interact();
-    void InteractRelease();
+    void Interact(GameObject player);
+    void InteractRelease(GameObject player);
 }

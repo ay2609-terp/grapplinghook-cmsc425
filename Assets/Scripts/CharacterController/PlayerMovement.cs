@@ -6,6 +6,9 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 2f;
     public float mouseSensitivity = 0.1f;
 
+    // Mouse look enabled
+    public bool lookEnabled = true;
+
     // Jumping and falling vars
     public float gravity = -9.81f;
     public float jumpHeight = .1f;
@@ -114,12 +117,15 @@ public class PlayerMovement : MonoBehaviour
         yVelocity += gravity * Time.deltaTime;
 
         // Mouse look and camera rotation
-        float mouseX = lookInput.x * mouseSensitivity;
-        float mouseY = lookInput.y * mouseSensitivity;
-        xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
-        cameraTransform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
-        transform.Rotate(Vector3.up * mouseX);
+        if (lookEnabled)
+        {
+            float mouseX = lookInput.x * mouseSensitivity;
+            float mouseY = lookInput.y * mouseSensitivity;
+            xRotation -= mouseY;
+            xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+            cameraTransform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+            transform.Rotate(Vector3.up * mouseX);
+        }
 
         // Movement and speed
         Vector3 move = transform.right * moveInput.x + transform.forward * moveInput.y;
@@ -210,6 +216,6 @@ public class PlayerMovement : MonoBehaviour
         float radius = controller.radius;
         Vector3 bottom = transform.position - Vector3.up * (controller.height / 2 - controller.radius);
         Vector3 top = transform.position + Vector3.up * (controller.height / 2 - controller.radius);
-        return !Physics.CheckCapsule(bottom, top, radius);
+        return !Physics.CheckCapsule(bottom, top, radius, ~LayerMask.GetMask("Player"));
     }
 }
