@@ -85,16 +85,16 @@ public class ExposureDetector : MonoBehaviour
 
         Vector3 lightPosition = light.transform.position;
 
-          float distance = Vector3.Distance(position, lightPosition);
+        float distance = Vector3.Distance(position, lightPosition);
 
-    // check if player is outside the light's range
-    if (distance > light.range)
-    {
-        if (drawDebugLines)
-            Debug.DrawLine(position, lightPosition, Color.gray);
+        // check if player is outside the light's range
+        if (distance > light.range)
+        {
+            if (drawDebugLines)
+                Debug.DrawLine(position, lightPosition, Color.gray);
 
-        return false;
-    }
+            return false;
+        }
 
         // check if position is in the spotlight cone
         float relativeDot = Vector3.Dot(light.transform.forward, (position - lightPosition).normalized);
@@ -122,11 +122,27 @@ public class ExposureDetector : MonoBehaviour
         return true;
     }
 
-    // stub
     private bool inDirectionalLight(Light light, Vector3 position, bool drawDebugLines = false)
     {
-        Debug.Log("ExposureDetector inDirectionalLight Unimplemented");
-        return false;
+        if (!light.enabled)
+            return false;
+
+        Vector3 directionToLight = -light.transform.forward;
+
+        float maxDistance = 1000f;
+
+        if (Physics.Raycast(position, directionToLight, out RaycastHit hit, maxDistance, OccluderLayers))
+        {
+            if (drawDebugLines)
+                Debug.DrawLine(position, hit.point, Color.red);
+
+            return false;
+        }
+
+        if (drawDebugLines)
+            Debug.DrawLine(position, position + directionToLight * maxDistance, Color.green);
+
+        return true;
     }
 
     // stub
