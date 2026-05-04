@@ -13,7 +13,12 @@ public class Pivotable : MonoBehaviour, IInteractable
     private bool pivoting = false;
     private float yaw;
     private float pitch;
-    private Quaternion startRotation;
+    private Quaternion baseRotation;
+
+    void Awake()
+    {
+        baseRotation = transform.rotation;
+    }
 
     public string ActionTooltip()
     {
@@ -28,8 +33,6 @@ public class Pivotable : MonoBehaviour, IInteractable
         movementScript.lookEnabled = false;
 
         LookAction.action.Enable();
-
-        startRotation = transform.rotation;
     }
 
     public void InteractRelease(GameObject player)
@@ -55,6 +58,6 @@ public class Pivotable : MonoBehaviour, IInteractable
         pitch += mouseY * rotationSpeed * Time.deltaTime;
         pitch = Mathf.Clamp(pitch, -maxPitch, maxPitch);
 
-        transform.rotation = startRotation * Quaternion.Euler(pitch, yaw, 0f);
+        transform.rotation = baseRotation * Quaternion.Euler(pitch, yaw, 0f);
     }
 }

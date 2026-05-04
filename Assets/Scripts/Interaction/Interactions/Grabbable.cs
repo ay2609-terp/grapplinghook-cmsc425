@@ -28,7 +28,7 @@ public class Grabbable : MonoBehaviour, IInteractable
         grabbing = true;
         this.player = player;
 
-        rotationOffset = Mathf.DeltaAngle(player.transform.eulerAngles.y, rigidBody.rotation.eulerAngles.y);
+        rotationOffset = Mathf.DeltaAngle(player.transform.eulerAngles.y, -90);
 
         rigidBody.useGravity = false;
         rigidBody.excludeLayers = LayerMask.GetMask("Player");
