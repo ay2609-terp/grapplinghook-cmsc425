@@ -33,6 +33,9 @@ public class MainMenu : MonoBehaviour
 
     public void BackToMainMenu()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
         mainMenuPanel.SetActive(true);
         levelSelectPanel.SetActive(false);
         instructionsPanel.SetActive(false);
